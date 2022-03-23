@@ -14,27 +14,31 @@
 <body>
     <main>
 
-        <div class="title-section">
+        <div class="top-title">
             <h1 class="title">Today's To Do</h1>
-            <button type="button" class="icon">
-                <i class="fa-solid fa-rotate"></i>
-            </button>
+            <div class="icon">
+                <i class="fa fa-refresh" aria-hidden="true"></i>
+
+            </div>
         </div>
 
-        <div class="input-section">
-            <label for="newtask">
+        <div class="input-sec">
+            <div class="in">
                 <input type="text" id="add-task" name="newtask" value="" placeholder="Add to your list...">
                 <input id="submit-new-item" type="submit" value="" title="click this or press enter to submit"
                     class="icon-return">
-        </div>
-
-        <ul class="to-do-list">
+            </div>
 
 
-        </ul>
 
-        <button type="button" class="clear-button">Clear all
-            completed</button>
+            <ul class="todo-list">
+                <!--render here-->
+            </ul>
+
+            <div class="sub">
+                <input type="submit" value="Clear all completed" class="clear-button">
+            </div>
+
 
     </main>
 </body>
