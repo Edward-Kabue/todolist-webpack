@@ -1,3 +1,24 @@
 body {
   background-color: bisque;
 }
+
+#add-task {
+  width: 30%;
+  padding: 0 40px 0 1rem;
+  line-height: 50px;
+  height: 50px;
+  border: none;
+  font-style: italic;
+}
+
+#submit-new-item {
+  background-image: url(./images/icons_enter.png);
+  background-color: white;
+  border: none;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 40px;
+  height: 50px;
+  cursor: pointer;
+  position: absolute;
+}
