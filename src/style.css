@@ -57,17 +57,13 @@ main {
   display: grid;
 }
 
-input {
-  display: flex;
-}
-
 .in {
   display: flex;
   width: 100%;
 }
 
 #add-task {
-  width: auto;
+  width: 100%;
   padding: 0 2.3in 0 1rem;
   line-height: 50px;
   height: 50px;
