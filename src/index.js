@@ -4,17 +4,17 @@ const todoList = document.querySelector('.todo-list');
 
 const tasks = [
   {
-    description: 'This is my first task',
+    description: 'Drag  drop to reorder your list',
     completed: false,
     index: 0,
   },
   {
-    description: 'This is my second task',
+    description: 'Resync to clear out the old',
     completed: false,
     index: 1,
   },
   {
-    description: 'This is my third task',
+    description: 'Render the list dynamically ',
     completed: false,
     index: 2,
   },
@@ -30,7 +30,7 @@ const render = () => {
     todoList.innerHTML += `
     <li class="list">
         <input id="check" type="checkbox" >
-        <input type="text" value="${tasks[i].description}" class="new-task">
+        <input type="text" value="${tasks[i].description}" class="Add">
     </li>
       `;
   }
