@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <title>To do list</title>
+</head>
+
+<body>
+    <main>
+        <div class="input-sec">
+            <div class="top-title">
+                <input type="text" value="Today's To Do" class="new-task">
+                <div class="icon">
+                    <i class="fa fa-refresh" aria-hidden="true"></i>
+
+                </div>
+            </div>
+            <div class="in">
+                <input type="text" id="add-task" name="newtask" value="" placeholder="Add to your list...">
+                <input id="submit-new-item" type="submit" value="" title="click this or press enter to submit"
+                    class="icon-return">
+            </div>
+
+
+
+            <ul class="todo-list">
+                <!--render here-->
+            </ul>
+
+            <div class="sub">
+                <input type="submit" value="Clear all completed" class="clear-button">
+            </div>
+
+        </div>
+    </main>
+</body>
+
+</html>
