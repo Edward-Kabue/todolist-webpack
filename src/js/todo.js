@@ -1,11 +1,10 @@
-export default class todo {
+export default class Todo {
   constructor(checked = false, description = '') {
     this.checked = checked;
     this.description = description;
-    this.list =
-      localStorage.getItem('list') !== null
-        ? JSON.parse(localStorage.getItem('list'))
-        : '';
+    this.list = localStorage.getItem('list') !== null
+      ? JSON.parse(localStorage.getItem('list'))
+      : '';
   }
 
   localStorage(task = this.list) {
@@ -13,14 +12,14 @@ export default class todo {
     localStorage.setItem('list', storeList);
   }
 
-  static displayList(task) {
-    const iterate = ({ index, Tdescription }) => {
-      const lItem = `
+  static displayList(tasks) {
+    const iterate = ({ index, desc }) => {
+      const todoItem = `
     <li index="${index}" class="list">
      <div class="checkbox" id="check" >
       <i class="fas fa-stop"></i>
      </div>
-     <input type="text" class="input-text" id="${index}" value="${Tdescription}">
+     <input type="text" class="input-text" id="${index}" value="${desc}">
      <div class="ellips">
       <i class="fas fa-ellipsis-v"></i>
      </div>
@@ -29,10 +28,11 @@ export default class todo {
      </label>
     </li>`;
       const [ul] = document.getElementsByClassName('todo-list ');
-      ul.insertAdjacentHTML('beforeend', lItem);
+      const position = 'beforeend';
+      ul.insertAdjacentHTML(position, todoItem);
     };
-    task.forEach((element) => {
-      iterate(element);
+    tasks.forEach((task) => {
+      iterate(task);
     });
   }
 
@@ -41,16 +41,16 @@ export default class todo {
       this.list = [
         {
           index: 1,
-          Tcompleted: this.checked,
-          Tdescription: this.description,
+          checked: this.checked,
+          desc: this.description,
         },
       ];
       this.localStorage();
     } else {
       const task = {
         index: this.list.length + 1,
-        Tcompleted: this.checked,
-        Tdescription: this.description,
+        checked: this.checked,
+        desc: this.description,
       };
       this.list.push(task);
       this.localStorage();
@@ -68,8 +68,8 @@ export default class todo {
     task.remove();
   }
 
-  editTask(who, value) {
-    this.list[who].Tdescription = value;
+  editTask(index, value) {
+    this.list[index].desc = value;
     this.localStorage();
   }
 }

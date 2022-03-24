@@ -1,54 +1,54 @@
 import './style.css';
-import todo from './js/todo.js';
+import Todo from './js/todo.js';
 
 if (localStorage.getItem('list') !== null) {
   const list = JSON.parse(localStorage.getItem('list'));
-  todo.displayList(list);
+  Todo.displayList(list);
 }
 
 const input = document.querySelectorAll('.input-text');
 
-const getFocus = (event) => {
+const toggleTrash = (event) => {
   const li = event.target.parentNode;
-  const ellips = event.target.nextElementSibling;
-  const trash = ellips.nextElementSibling;
+  const drag = event.target.nextElementSibling;
+  const trash = drag.nextElementSibling;
 
-  li.style.backgroundColor = '#ffe24370';
-  ellips.style.visibility = 'hidden';
+  li.style.backgroundColor = '#FFFFE5';
+  drag.style.visibility = 'hidden';
   trash.style.visibility = 'visible';
 };
 
-const lostFocus = (event) => {
+const toggleDrag = (event) => {
   const li = event.target.parentNode;
-  const ellips = event.target.nextElementSibling;
-  const trash = ellips.nextElementSibling;
+  const drag = event.target.nextElementSibling;
+  const trash = drag.nextElementSibling;
 
   li.style.backgroundColor = '';
-  ellips.style.visibility = 'visible';
+  drag.style.visibility = 'visible';
   trash.style.visibility = 'hidden';
 };
 
 input.forEach((element) => {
-  element.addEventListener('focus', getFocus);
-  element.addEventListener('blur', lostFocus);
+  element.addEventListener('focus', toggleTrash);
+  element.addEventListener('blur', toggleDrag);
 });
 
 //  edit task
 
 input.forEach((element) => {
   element.addEventListener('change', (event) => {
-    const task = new todo();
+    const task = new Todo();
     task.editTask(Number(event.target.id) - 1, event.target.value);
   });
 });
 
 const form = document.getElementById('sub_form');
-const Nitem = document.getElementById('new-item');
+const addTodo = document.querySelector('.add-todo');
 const submit = (event) => {
-  if (Nitem.value === '') {
+  if (addTodo.value === '') {
     event.preventDefault();
   } else {
-    const task = new todo(false, Nitem.value);
+    const task = new Todo(false, addTodo.value);
     task.addTask();
   }
 };
@@ -59,7 +59,7 @@ remove.forEach((el) => {
   el.addEventListener('click', function (e) {
     e.stopImmediatePropagation();
     const index = this.parentNode.getAttribute('index');
-    const task = new todo();
+    const task = new Todo();
     task.removeTask(Number(index));
   });
 });
