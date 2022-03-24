@@ -73,8 +73,13 @@ checkbox.forEach((element) => {
   });
 });
 
-// Clear all task
-
 const clearCompleted = document.getElementById('clear');
 
 clearCompleted.addEventListener('click', clearAll);
+
+const clear = document.querySelector('.icon');
+
+clear.addEventListener('click', function () {
+  localStorage.clear();
+  location.reload();
+});
