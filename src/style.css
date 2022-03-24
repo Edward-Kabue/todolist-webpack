@@ -16,7 +16,7 @@
 }
 
 body {
-  background-color: bisque;
+  background-color: white;
 }
 
 main {
@@ -29,7 +29,7 @@ main {
 .top-title {
   display: flex;
   padding: 20px;
-  background-color: antiquewhite;
+  background-color: white;
 }
 
 .new-task {
