@@ -2,9 +2,10 @@ export default class Todo {
   constructor(checked = false, description = '') {
     this.checked = checked;
     this.description = description;
-    this.list = localStorage.getItem('list') !== null
-      ? JSON.parse(localStorage.getItem('list'))
-      : '';
+    this.list =
+      localStorage.getItem('list') !== null
+        ? JSON.parse(localStorage.getItem('list'))
+        : '';
   }
 
   localStorage(task = this.list) {
@@ -13,20 +14,32 @@ export default class Todo {
   }
 
   static displayList(tasks) {
-    const iterate = ({ index, desc }) => {
+    const iterate = ({ index, desc, checked, done }) => {
+      const CHECK = 'fa-check-circle';
+      const UNCHECK = 'fa-circle-thin';
+      const LINE_THROUGH = 'lineThrough';
+      const DONE = done ? CHECK : UNCHECK;
+      const LINE = done ? LINE_THROUGH : '';
       const todoItem = `
-    <li index="${index}" class="list">
-     <div class="checkbox" id="check" >
-      <i class="fas fa-stop"></i>
-     </div>
-     <input type="text" class="input-text" id="${index}" value="${desc}">
-     <div class="ellips">
-      <i class="fas fa-ellipsis-v"></i>
-     </div>
-     <label class="trash" for="${index}">
-      <i class="fas fa-trash-alt"></i>
-     </label>
-    </li>`;
+            <li index="${index}" class="list">
+                <div class="checkbox" id="check" completed="${checked}" > 
+                ${
+                  checked === false
+                    ? '<i style="width: 14.15px;" class="fas fa-ellipsis-v"></i>'
+                    : '<i style="color:blue; border: none" class="fas fa-check"></i>'
+                } 
+                </div>
+                <input type="text" style=" text-decoration: ${
+                  checked === false ? '' : 'line-through'
+                };"
+                 class="input-text" id="${index}" value="${desc}">
+                <div class="ellips">
+                <i class="fas fa-ellipsis-v"></i>
+                </div>
+                <label class="trash" for="${index}">
+                 <i class="fas fa-trash-alt"></i>
+                </label>
+            </li>`;
       const [ul] = document.getElementsByClassName('todo-list ');
       const position = 'beforeend';
       ul.insertAdjacentHTML(position, todoItem);
@@ -69,7 +82,12 @@ export default class Todo {
   }
 
   editTask(index, value) {
-    this.list[index].desc = value;
-    this.localStorage();
+    if (typeof value === 'string') {
+      this.list[index].desc = value;
+      this.localStorage();
+    } else {
+      this.list[index].checked = value;
+      this.localStorage();
+    }
   }
 }

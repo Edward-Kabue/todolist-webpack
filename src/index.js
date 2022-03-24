@@ -1,5 +1,6 @@
 import './style.css';
 import Todo from './js/todo.js';
+import { checkBox, clearAll } from './js/check';
 
 if (localStorage.getItem('list') !== null) {
   const list = JSON.parse(localStorage.getItem('list'));
@@ -63,3 +64,17 @@ remove.forEach((el) => {
     task.removeTask(Number(index));
   });
 });
+
+const checkbox = document.querySelectorAll('.checkbox');
+
+checkbox.forEach((element) => {
+  element.addEventListener('click', function () {
+    checkBox(this);
+  });
+});
+
+// Clear all task
+
+const clearCompleted = document.getElementById('clear');
+
+clearCompleted.addEventListener('click', clearAll);
