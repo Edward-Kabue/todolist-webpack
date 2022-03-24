@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="style.css">
-    <title>To do list</title>
+    <link type="text/css" rel="stylesheet" href="style.css">
+    <title>Todo list</title>
 </head>
 
 <body>
@@ -21,20 +21,22 @@
 
                 </div>
             </div>
-            <div class="in">
-                <input type="text" id="add-task" name="newtask" value="" placeholder="Add to your list...">
-                <input id="submit-new-item" type="submit" value="" title="click this or press enter to submit"
-                    class="icon-return">
-            </div>
+            <form class="in" id="sub_form">
+                <input type="text" class="add-todo" id="new-item" placeholder="Add to your list...">
+                <div class="submit-item">
+                    <input type="submit" class="add-item" id="submit_item" value=" "
+                        title="click this or press enter to submit">
+                </div>
+            </form>
 
 
 
-            <ul class="todo-list">
+            <ul class="todo-list ">
                 <!--render here-->
             </ul>
 
             <div class="sub">
-                <input type="submit" value="Clear all completed" class="clear-button">
+                <input type="submit" id="clear" value="Clear all completed" class="clear-button">
             </div>
 
         </div>
