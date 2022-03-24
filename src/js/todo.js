@@ -2,10 +2,9 @@ export default class Todo {
   constructor(checked = false, description = '') {
     this.checked = checked;
     this.description = description;
-    this.list =
-      localStorage.getItem('list') !== null
-        ? JSON.parse(localStorage.getItem('list'))
-        : '';
+    this.list = localStorage.getItem('list') !== null
+      ? JSON.parse(localStorage.getItem('list'))
+      : '';
   }
 
   localStorage(task = this.list) {
@@ -14,24 +13,19 @@ export default class Todo {
   }
 
   static displayList(tasks) {
-    const iterate = ({ index, desc, checked, done }) => {
-      const CHECK = 'fa-check-circle';
-      const UNCHECK = 'fa-circle-thin';
-      const LINE_THROUGH = 'lineThrough';
-      const DONE = done ? CHECK : UNCHECK;
-      const LINE = done ? LINE_THROUGH : '';
+    const iterate = ({ index, desc, checked }) => {
       const todoItem = `
             <li index="${index}" class="list">
                 <div class="checkbox" id="check" completed="${checked}" > 
                 ${
-                  checked === false
-                    ? '<i style="width: 14.15px;" class="fas fa-ellipsis-v"></i>'
-                    : '<i style="color:blue; border: none" class="fas fa-check"></i>'
-                } 
+  checked === false
+    ? '<i style="width: 14.15px;" class="fas fa-ellipsis-v"></i>'
+    : '<i style="color:blue; border: none" class="fas fa-check"></i>'
+} 
                 </div>
                 <input type="text" style=" text-decoration: ${
-                  checked === false ? '' : 'line-through'
-                };"
+  checked === false ? '' : 'line-through'
+};"
                  class="input-text" id="${index}" value="${desc}">
                 <div class="ellips">
                 <i class="fas fa-ellipsis-v"></i>

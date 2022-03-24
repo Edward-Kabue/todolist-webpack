@@ -1,6 +1,6 @@
 import './style.css';
 import Todo from './js/todo.js';
-import { checkBox, clearAll } from './js/check';
+import { checkBox, clearAll } from './js/check.js';
 
 if (localStorage.getItem('list') !== null) {
   const list = JSON.parse(localStorage.getItem('list'));
@@ -79,7 +79,6 @@ clearCompleted.addEventListener('click', clearAll);
 
 const clear = document.querySelector('.icon');
 
-clear.addEventListener('click', function () {
+clear.addEventListener('click', () => {
   localStorage.clear();
-  location.reload();
 });

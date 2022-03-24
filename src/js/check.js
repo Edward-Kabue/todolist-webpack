@@ -4,8 +4,7 @@ export const checkBox = (item) => {
   const isChecked = item.getAttribute('completed');
   const task = new Todo();
   if (isChecked === 'false') {
-    item.innerHTML =
-      '<i style="color:blue; border: none" class="fa fa-check"></i>';
+    item.innerHTML = '<i style="color:blue; border: none" class="fa fa-check"></i>';
     item.nextElementSibling.style.textDecoration = 'line-through';
     const index = Number(item.parentNode.getAttribute('index'));
     task.editTask(index - 1, true);
